@@ -25,4 +25,4 @@ jobs:
       - name: git log
         run: git log --oneline
       - name: clone
-        run: git clone https://github.com/sai411/Genea_DevSecOps_assignment.git
+        run: git clone https://github.com/sai411/foodie.git
