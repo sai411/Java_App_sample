@@ -33,4 +33,4 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          git clone https://x-access-token:${GH_TOKEN}@github.com/sai411/foodie.git
+          git clone https://x-access-token:${GH_TOKEN}@github.com/sai411/myapp.git
