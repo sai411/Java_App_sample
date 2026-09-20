@@ -15,14 +15,22 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 
-      - name: Use GitHub App token
+      - name: Show token generated
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           echo "GitHub App token generated"
+
       - name: Checkout source code
         uses: actions/checkout@v4
-      - name: git log
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Git log
         run: git log --oneline
-      - name: clone
-        run: git clone https://github.com/sai411/foodie.git
+
+      - name: Clone foodie
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          git clone https://x-access-token:${GH_TOKEN}@github.com/sai411/foodie.git
